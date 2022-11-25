@@ -9,16 +9,18 @@ class App extends React.Component{
   constructor(){
     super();
     this.state={
-      contadorClicks:0
+      contadorClicks: 0
     };
+    this.manejarClick=this.manejarClick.bind(this);
+    this.reiniciarContador=this.reiniciarContador.bind(this);
   }
 
   manejarClick(){
-    this.setState(({ contadorClicks }) => ({ contador: contadorClicks+1 }));
+    this.setState(({ contadorClicks }) => ({ contadorClicks: contadorClicks + 1 }));
   }
 
   reiniciarContador(){
-    this.setState({contador: 0})
+    this.setState({contadorClicks: 0})
   }
 
   render(){
@@ -33,17 +35,17 @@ class App extends React.Component{
         </div>
         <div className='main-container'>
           <Contador 
-            contadorClicks={this.props.contadorClicks }
+            contadorClicks={this.state.contadorClicks }
           />
           <Boton
             texto="Click"
             esBotonClick={ true }
-            manejarClick={this.props.manejarClick}
+            manejarClick={this.manejarClick}
           />
           <Boton
             texto="Reiniciar"
             esBotonClick={ false }
-            manejarClick={this.props.reiniciarContador}
+            manejarClick={this.reiniciarContador}
           /> 
         </div>
       </div>
